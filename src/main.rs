@@ -14,18 +14,18 @@ fn main() -> Result<(), Box<dyn Error>> {
     println!("🔠 Wordle in your terminal!");
 
     let mut tries_left = 6;
-    let did_win = false;
+    let mut did_win = false;
     let mut solutions: Vec<[GuessSlot; 5]> = vec![];
 
     println!("Start guessing:");
 
     loop {
         if tries_left == 0 && !did_win {
-            println!("You lost");
+            println!("You lost... 😔");
             break;
         } else if did_win {
-            print_rows(&solutions);
             println!("You won! 🎉");
+            break;
         }
 
         let mut guess = String::new();
@@ -51,8 +51,9 @@ fn main() -> Result<(), Box<dyn Error>> {
         filtered_split_guess.pop();
 
         let result: [GuessSlot; 5] = serde_json::from_str(&resp).unwrap();
-        solutions.push(result);
+        did_win = determine_win(&result);
 
+        solutions.push(result);
         print_rows(&solutions);
 
         tries_left -= 1;
@@ -76,4 +77,24 @@ fn print_rows(solutions: &Vec<[GuessSlot; 5]>) {
         print!("\n");
     }
     println!("----------------");
+}
+
+fn determine_win(guess: &[GuessSlot; 5]) -> bool {
+    let mut result = false;
+    let mut acc = 0;
+
+    for slot in guess {
+        match slot.result.as_str() {
+            "correct" => acc += 1,
+            "present" => continue,
+            "absent" => continue,
+            _ => continue,
+        }
+    }
+
+    if acc == 5 {
+        result = true
+    }
+
+    result
 }
