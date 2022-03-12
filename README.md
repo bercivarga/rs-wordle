@@ -1,6 +1,6 @@
 # [W][O][R][D][L][E] &mdash; Rust-based Wordle game, in your terminal!
 
-Ever head of the world-wide browser game phenomenon, [Wordle](https://www.nytimes.com/games/wordle/index.html) by The New York Times? If not, here's a short rundown on what the game is:
+Ever heard of the world-wide phenomenon, [Wordle](https://www.nytimes.com/games/wordle/index.html) from the good folks at The New York Times? If not, here's a short rundown on what the game is:
 
 In Wordle, your goal is to guess a random 5-letter word in 6 tries. With each guess, you reveal more information about the word by getting feedback on the characters you entered: When a character is not in the word, it's marked with a red color, if it is in the word but in the wrong place, then it's marked with a yellow color, and if the word is in the word and in the correct place, then it's drawn in green. The secret word changes every day.
 
