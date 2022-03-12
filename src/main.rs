@@ -13,7 +13,7 @@ struct GuessSlot {
 fn main() -> Result<(), Box<dyn Error>> {
     println!("🔠 Wordle in your terminal!");
 
-    let tries_left = 6;
+    let mut tries_left = 6;
     let did_win = false;
     let mut solutions: Vec<[GuessSlot; 5]> = vec![];
 
@@ -54,6 +54,8 @@ fn main() -> Result<(), Box<dyn Error>> {
         solutions.push(result);
 
         print_rows(&solutions);
+
+        tries_left -= 1;
     }
     Ok(())
 }
