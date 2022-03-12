@@ -6,9 +6,39 @@ In Wordle, your goal is to guess a random 5-letter word in 6 tries. With each gu
 
 This application takes the original Wordle concept and puts it right in your terminal.
 
+```bash
+[A][L][I][E][N] ❌ ❌ ❌ ❌ ❌
+[S][T][A][R][S] 🟨 ❌ ❌ ❌ 🟨
+[H][U][S][K][Y] ✅ ✅ ✅ ✅ ✅
+---------------
+You won 🎉
+```
+
 ---
 
-## Install
+## Play the game via the prebuilt executable
+
+If you don't want to build the app yourself, I've included a prebuilt executable in the `release/` folder that you can just run once you downloaded it.
+
+To proceed, clone the repo:
+
+```bash
+git clone https://github.com/bercivarga/rs-wordle.git
+cd rs-wordle
+```
+
+Then, navigate to the `release/` folder to find the `rs-wordle` executable.
+You can open the binary executable with the `open` command.
+
+```bash
+cd release
+open rs-wordle
+```
+
+Then play the game! You can always exit with `ctrl + c`.
+
+---
+## Run and/or install the app yourself
 
 In order to install this program in its current state, you need to have [Cargo](https://doc.rust-lang.org/cargo/getting-started/installation.html) installed.
 
@@ -16,7 +46,7 @@ Then, you have some options:
 
 ### 1. Run once without installation
 
-If you don't want the executable installed on your system, then simply clone the project and run the following command in the root directory:
+If you don't want the executable installed on your system, then simply run the following command in the root directory:
 
 ```bash
 cargo run
@@ -28,7 +58,7 @@ Then start playing the game!
 
 ### 2. Install binary on your system
 
-First clone the project, then run the command below to install the `rs-wordle` executable and command in `$HOME/.cargo/bin` on Unix based systems or `%USERPROFILE%\.cargo\bin` on Windows:
+Run the command below to install the `rs-wordle` executable and command in `$HOME/.cargo/bin` on Unix based systems or `%USERPROFILE%\.cargo\bin` on Windows:
 
 ```bash
 cargo install --path .
