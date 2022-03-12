@@ -23,6 +23,13 @@ fn main() -> Result<(), Box<dyn Error>> {
             reqwest::blocking::get(format!("https://v1.wordle.k2bd.dev/daily?guess={}", guess))?
                 .text()?;
 
+        let split_guess = guess.split("").collect::<Vec<&str>>();
+        let mut filtered_split_guess = split_guess
+            .into_iter()
+            .filter(|x| x.to_owned() != "".to_owned())
+            .collect::<Vec<&str>>();
+        filtered_split_guess.pop();
+        println!("{:?}", filtered_split_guess);
         let result: [GuessSlot; 5] = serde_json::from_str(&resp).unwrap();
         println!("{:?}", result);
         break;
