@@ -17,7 +17,8 @@ fn main() -> Result<(), Box<dyn Error>> {
     let mut did_win = false;
     let mut solutions: Vec<[GuessSlot; 5]> = vec![];
 
-    println!("Start guessing:");
+    println!("You have 6 chances for guessing the right 5 letter word.");
+    println!("Good luck! 🙆");
 
     loop {
         if tries_left == 0 && !did_win {
@@ -34,9 +35,10 @@ fn main() -> Result<(), Box<dyn Error>> {
 
         if guess.len() - 1 < 5 || guess.len() - 1 > 5 {
             println!("You need to insert 5 characters!");
-            println!("You types {} characters.", guess.len() - 1);
-            println!("Game over...");
-            break;
+            println!("You typed {} characters.", guess.len() - 1);
+            println!("Try again!");
+            println!("----------------");
+            continue;
         }
 
         let resp =
@@ -86,8 +88,6 @@ fn determine_win(guess: &[GuessSlot; 5]) -> bool {
     for slot in guess {
         match slot.result.as_str() {
             "correct" => acc += 1,
-            "present" => continue,
-            "absent" => continue,
             _ => continue,
         }
     }
