@@ -28,7 +28,7 @@ Then start playing the game!
 
 ### 2. Install binary on your system
 
-Running the command below will install the `rs-wordle` executable and command in `$HOME/.cargo/bin` on Unix based systems or `%USERPROFILE%\.cargo\bin` on Windows
+First clone the project, then run the command below to install the `rs-wordle` executable and command in `$HOME/.cargo/bin` on Unix based systems or `%USERPROFILE%\.cargo\bin` on Windows:
 
 ```bash
 cargo install --path .
