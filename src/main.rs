@@ -11,21 +11,39 @@ struct GuessSlot {
 }
 
 fn main() -> Result<(), Box<dyn Error>> {
-    println!("🔠 Wordle in your terminal!");
+    println!("\nWordle in your terminal! 🔠 🟩 🟨 🟥");
 
     let mut tries_left = 6;
     let mut did_win = false;
     let mut solutions: Vec<[GuessSlot; 5]> = vec![];
 
     println!("You have 6 chances to guess the right 5 letter word of the day.");
-    println!("Good luck! 🙆");
+    println!("Good luck! 🙆\n");
 
     loop {
         if tries_left == 0 && !did_win {
-            println!("You lost... 😔");
-            break;
+            println!("\nYou lost... 😔");
+            println!("Wanna try again? [Y/N]\n");
+
+            let mut again = String::new();
+            io::stdin().read_line(&mut again).expect("Wrong input");
+
+            let as_char: Vec<char> = again.to_lowercase().chars().collect();
+
+            if as_char[0] == 'y' {
+                solutions.clear();
+                tries_left = 6;
+                println!("\n⚡️ Let's go!");
+                println!("----------------\n");
+                continue;
+            } else {
+                println!("\nSee ya!");
+                println!("PS: You gotta play again to reveal the secret word. 😉\n");
+                break;
+            }
         } else if did_win {
-            println!("You won! 🎉");
+            println!("\nYou won! Congratulations! 🎉");
+            println!("See you tomorrow! 🙋\n");
             break;
         }
 
@@ -34,10 +52,10 @@ fn main() -> Result<(), Box<dyn Error>> {
         io::stdin().read_line(&mut guess).expect("Faulty input.");
 
         if guess.len() - 1 < 5 || guess.len() - 1 > 5 {
-            println!("You need to insert 5 characters!");
+            println!("\nYou need to insert 5 characters!");
             println!("You typed {} characters.", guess.len() - 1);
             println!("Try again!");
-            println!("----------------");
+            println!("----------------\n");
             continue;
         }
 
