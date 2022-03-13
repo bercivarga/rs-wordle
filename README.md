@@ -66,4 +66,6 @@ cargo install --path .
 
 ---
 
+Credits for the API powering the daily secrets goes to [k2bd/wordle-api](https://github.com/k2bd/wordle-api)
+
 #### Have fun! 🦧
