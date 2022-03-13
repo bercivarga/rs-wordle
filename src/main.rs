@@ -17,7 +17,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     let mut did_win = false;
     let mut solutions: Vec<[GuessSlot; 5]> = vec![];
 
-    println!("You have 6 chances for guessing the right 5 letter word of the day.");
+    println!("You have 6 chances to guess the right 5 letter word of the day.");
     println!("Good luck! 🙆");
 
     loop {
